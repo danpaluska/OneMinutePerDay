@@ -4,14 +4,15 @@
 #
 # ***************************************
 # ******OMPD - One Minute Per Day - Voluntary Anthropology
-# ******public timelapse wall
+# ******personal screencasting or public timelapse wall
 # need to install ffmpeg and imagemagick for this to work
-# maybe wacaw too if you want webcam on mac.
-# for linux you need to install scrot as well.
+# mac: install wacaw too if you want webcam.
+# linux: install scrot (screencapture) and streamer (webcam capture).
 # **************
 # **************
 
 # whatever you want to be your directory of files
+# *************** personalize ******************
 cd ~/Pictures/OMPD
 # make a subdirectory with today's date, then go to it.
 mkdir `date +%Y-%m-%d`
@@ -23,7 +24,8 @@ DATETIME=`date +%Y%m%d%H%M%S`
 counter=10000
 # at 15 seconds per shot, 4/min, 240/hr, 10 hours = 2400 shots
 # while [ $counter -ne 3400 ] # run a fixed number of shots.
-#while [ `date +%H` -lt 23 ] # if it's less that 11pm
+# while [ `date +%H` -lt 23 ] # if it's less that 11pm
+# ********************************************************
 while [ 1 ] # run all the time
 do
 DATETIME=`date +%Y%m%d%H%M%S`
@@ -45,10 +47,12 @@ NOWDATE=`date +%Y%m%d`
 #         for f in *.jpg; do let "counter+=1"; mv $f screen${counter:1}.jpg ; done
 #done
 
-        ffmpeg -r 20 -b 5000 -i screen%04d.jpg ~/Movies/AUTOUPLOAD/OMPD-$DDDATE-$NOWDATE.mp4
+        ffmpeg -r 20 -b 5000 -i screen%04d.jpg ~/Movies/AUTOUPLOAD/OMPD-$DDDATE.mp4
         #ffmpeg -r 10 -sameq -i webcam%04d.jpg ~/Movies/AUTOUPLOAD/camTL-$DDDATE.mp4
         #ffmpeg -r 15 -b 5000 -i webcam%04d.jpg ~/Movies/AUTOUPLOAD/`
         # -b 5000 to limit movie size.    
+        
+        # ************ CHANGE THIS ONE TOO IF YOU CHANGED THE ONE ABOVE
         cd ~/Pictures/OMPD
         mkdir `date +%Y-%m-%d`
         cd `date +%Y-%m-%d`
@@ -56,21 +60,22 @@ NOWDATE=`date +%Y%m%d`
         DDDATE=`date +%Y%m%d`
     fi
 
-#let "counter+=1"
+# let "counter+=1"
 echo $DATETIME
-#echo $counter # if you want to see the progression on the terminal window
+# echo $counter # if you want to see the progression on the terminal window
 # capture a JPG screenshot
 
-#screencapture -m -x -t jpg screen${counter:1}.jpg
+# you can use this line if you're only capturing a fix number of frames.
+# screencapture -m -x -t jpg screen${counter:1}.jpg
 screencapture -m -x -t jpg screen$DATETIME.jpg
 
-## linux commands
+## linux commands, scrot is screencapture. streamer is webcam capture
 #scrot screen$DATETIME.jpg
 #streamer -c /dev/video0 -o cam$DATETIME.jpeg
 
 
-
-#wacaw --jpeg -n 4 webcam${counter:1}.jpg
+# wacaw is mac webcam capture utility
+# wacaw --jpeg -n 4 webcam${counter:1}.jpg
 echo "captured images"
 # resize images using imagemagick here?
 convert screen$DATETIME.jpg -resize 60% screen$DATETIME.jpg
