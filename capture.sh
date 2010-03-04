@@ -9,8 +9,8 @@
 # ** need to install ffmpeg and imagemagick for this to work
 # ** mac: install wacaw too if you want webcam.
 # ** linux: install scrot (screencapture) and streamer (webcam capture).
-# **************
-# **************
+# ******************************************************
+# **** public domain. no rights reserved **********
 
 # whatever you want to be your directory of files
 # *************** personalize ******************
