@@ -2,12 +2,13 @@
 
 # boranj!
 #
-# ***************************************
+# ***** howto: http://plebiandesign.com/blog/?p=552 *********
+# ***********************************************************
 # ******OMPD - One Minute Per Day - Voluntary Anthropology
 # ******personal screencasting or public timelapse wall
-# need to install ffmpeg and imagemagick for this to work
-# mac: install wacaw too if you want webcam.
-# linux: install scrot (screencapture) and streamer (webcam capture).
+# ** need to install ffmpeg and imagemagick for this to work
+# ** mac: install wacaw too if you want webcam.
+# ** linux: install scrot (screencapture) and streamer (webcam capture).
 # **************
 # **************
 
