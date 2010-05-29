@@ -1,0 +1,20 @@
+
+#
+# FRUIT IS A FREE SUGARY TREAT THAT 
+# CONTAINS INSTRUCTIONS FOR GROWTH
+#
+
+# initialize
+convert -size 1440x900 gradient:  -evaluate sin 100  wave_gradient.png
+convert -background none -pointsize 36 label:@thistextfile label.gif
+screencapture -m -x -t jpg last.jpg
+
+# loop
+DATETIME=`date +%Y%m%d%H%M%S`
+screencapture -m -x -t jpg new.jpg #see also scrot
+#composite wave_gradient.png new.jpg -displace 3x3 middle.jpg
+composite -blend 15 new.jpg last.jpg -matte middle.jpg
+composite -gravity center label.gif middle.jpg middle.jpg
+cp middle.jpg last.jpg
+convert middle.jpg -resize 50% screen$DATETIME.jpg
+sleep 20
